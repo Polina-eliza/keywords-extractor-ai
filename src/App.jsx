@@ -1,4 +1,3 @@
-import '@fontsource/space-grotesk/400.css';
 import { useState } from 'react';
 import { Container, Box } from '@chakra-ui/react';
 import Header from './components/Header';
@@ -34,16 +33,14 @@ const App = () => {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data)
+      console.log(response.data);
       if (response.data) {
-
-        const responsearray=response.data['eden-ai'].items
-        const keywords=[]
-        responsearray.forEach(element => {
-          keywords.push(element.keyword)
-        });
-    
-        setKeywords(keywords);
+        const responsearray=response.data['eden-ai'].items;
+        const keywords = responsearray
+        .map((element) => element.keyword.charAt(0).toUpperCase() + element.keyword.slice(1))
+        .slice(0, 15);
+      const formattedKeywords = keywords.join(', ');
+      setKeywords(formattedKeywords);
       } else {
         console.error('Keywords not found in response data.');
       }
