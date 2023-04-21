@@ -57,7 +57,7 @@ const App = () => {
   
 
   return (
-    <Box bg='gray.600' fontFamily='monospace' color='white' height='100vh' paddingTop={130}>
+    <Box bg='gray.600' fontFamily='monospace' color='white' minHeight='100vh' overflow='hidden' paddingTop={130}>
       <Container maxW='3xl' centerContent>
         <Header />
         <TextInput extractKeywords={extractKeywords} />
